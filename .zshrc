@@ -22,7 +22,7 @@
     autoload -U colors && colors
     SHORTPROMPT="%{$fg[green]%}>%{$reset_color%}"
     MEDIUMPROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%1~] %{$reset_color%}%"
-    LONGPROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%~] %{$reset_color%}#%"
+    LONGPROMPT="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$fg_no_bold[green]%}[%~] %{$reset_color%}%"
     RPROMPTDATE="%{$fg[cyan]%}%*%{$reset_color%}"
     
     PROMPT=$MEDIUMPROMPT
