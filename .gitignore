@@ -1,0 +1,5 @@
+homedir/.config/ranger/*
+!homedir/.config/ranger/rc.conf
+
+homedir/.config/nvim/plugged
+homedir/.config/nvim/.netrwhist
