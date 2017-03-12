@@ -18,6 +18,9 @@
         bindsym $mod+Return exec uxterm
     # Start chrome
         bindsym $mod+x exec google-chrome-stable
+    # Start / stop redshift
+        bindsym $mod+n exec switch-redshift-state
+
     # Start rofi (Program launcher and windows selector)
         bindsym $mod+w exec --no-startup-id rofi -show window
         bindsym $mod+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i'
@@ -31,7 +34,6 @@
        for_window [instance="scratchpad"] floating_maximum 100 x 100;
        for_window [instance="scratchpad"] move scratchpad;
        bindsym $mod+z scratchpad show
-
 
 
 
