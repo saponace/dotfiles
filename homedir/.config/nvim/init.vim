@@ -15,6 +15,7 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'tpope/vim-surround' " Mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
     " Integration with external tools
         Plug 'tpope/vim-fugitive' " Amazing git wrapper for vim
+        Plug 'airblade/vim-gitgutter' " Show modified/added/deleted lines for current file
         " Plug 'benmills/vimux' " Tmux integration
         " Plug 'tpope/vim-dispatch' " Asynchronous build and test dispatcher
     " UI
