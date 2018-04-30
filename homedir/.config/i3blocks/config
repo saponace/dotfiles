@@ -71,6 +71,12 @@ color=#FF5D0D
 
 [separator]
 
+[bandwidth]
+label=
+interval=30
+
+[separator]
+
 # Available updates
 [pacman-updates]
 label=
@@ -80,11 +86,20 @@ interval= 3600
 
 [separator]
 
-[Date]
+# Local IP
+[iface]
+label=
+interval=20
+color=#4466BB
+
+[separator]
+
+[rofi-calendar]
 label=
-command=date '+%d/%m/%Y'
-interval=100
+command=~/.config/i3blocks/scripts/rofi-calendar
+# command=$SCRIPT_DIR/rofi-calendar
 color=#FFFDD0
+interval=600
 
 [separator]
 
