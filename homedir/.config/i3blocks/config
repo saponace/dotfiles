@@ -29,32 +29,23 @@ separator=false
 separator_block_width=10
 
 
-
-
-
-#            # Current track playing via mpd
-#            [mediaplayer]
-#            label=
-#            instance=mpd
-#            color=#00FF00
-#            interval=5
-#
-#            [separator]
-
-
-# Memory usage
+# RAM
 [memory]
-label=
+label=
 interval=10
-color=#CC7D4B
+color=#CC7D3B
 
 [separator]
 
+# SWAP
+[memory]
+label=
+instance=swap
+interval=10
+color=#7ea1a5
 
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
+[separator]
+
 [cpu_usage]
 label=
 interval=10
@@ -62,8 +53,6 @@ color=#F04DFF
 
 [separator]
 
-
-# Volume indicator
 [volume]
 label=
 instance=Master
@@ -73,7 +62,7 @@ color=#6EAAF7
 
 [separator]
 
-# Battery indicator
+# Battery level
 [battery]
 label=
 interval=30
@@ -82,7 +71,15 @@ color=#FF5D0D
 
 [separator]
 
-# Date Time
+# Available updates
+[pacman-updates]
+label=
+command=~/.config/i3blocks/scripts/arch-update.py -a -b "#5fff5f" -u "#FFFF85"
+markup=pango
+interval= 3600
+
+[separator]
+
 [Date]
 label=
 command=date '+%d/%m/%Y'
@@ -98,6 +95,7 @@ interval=5
 color=#FFFDD0
 
 [separator]
+
 
 # Key indicators
 [keyindicator]
