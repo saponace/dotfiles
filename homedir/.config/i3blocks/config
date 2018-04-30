@@ -34,7 +34,7 @@ separator_block_width=10
 
 #            # Current track playing via mpd
 #            [mediaplayer]
-#            label= 
+#            label=
 #            instance=mpd
 #            color=#00FF00
 #            interval=5
@@ -44,7 +44,7 @@ separator_block_width=10
 
 # Memory usage
 [memory]
-label= 
+label=
 interval=10
 color=#CC7D4B
 
@@ -56,7 +56,7 @@ color=#CC7D4B
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label= 
+label=
 interval=10
 color=#F04DFF
 
@@ -65,7 +65,7 @@ color=#F04DFF
 
 # Volume indicator
 [volume]
-label= 
+label=
 instance=Master
 interval=10
 signal=10
@@ -75,7 +75,7 @@ color=#6EAAF7
 
 # Battery indicator
 [battery]
-label= 
+label=
 interval=30
 command=/bin/battery-level -s
 color=#FF5D0D
@@ -84,15 +84,15 @@ color=#FF5D0D
 
 # Date Time
 [Date]
-label= 
-command=date '+%a %d %b, %Y'
+label=
+command=date '+%d/%m/%Y'
 interval=100
 color=#FFFDD0
 
 [separator]
 
 [time]
-label= 
+label=
 command=date '+%H:%M'
 interval=5
 color=#FFFDD0
@@ -101,13 +101,13 @@ color=#FFFDD0
 
 # Key indicators
 [keyindicator]
-label= 
-instance=CAPS
-interval=10
-signal=10
-
-[keyindicator]
-label= 
+label=
 interval=10
 signal=10
 instance=NUM
+
+[keyindicator]
+label=
+instance=CAPS
+interval=10
+signal=10
