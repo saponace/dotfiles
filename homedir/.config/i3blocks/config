@@ -88,7 +88,16 @@ interval= 3600
 
 # Local IP
 [iface]
+label=
+interval=20
+color=#4466BB
+
+[separator]
+
+# Public IP
+[public-ip]
 label=
+command=curl ipecho.net/plain
 interval=20
 color=#4466BB
 
