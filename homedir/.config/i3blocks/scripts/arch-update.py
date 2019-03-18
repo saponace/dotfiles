@@ -28,7 +28,7 @@ def create_argparse():
         '-a',
         '--aur',
         action='store_true',
-        help='Include AUR packages. Attn: Yaourt must be installed'
+        help='Include AUR packages. Attn: Yay must be installed'
     )
     parser.add_argument(
         '-q',
@@ -48,7 +48,7 @@ def create_argparse():
 
 
 def get_updates():
-    output = check_output(['checkupdates']).decode('utf-8')
+    output = check_output(['pacman', '-Qu']).decode('utf-8')
     if not output:
         return []
 
@@ -62,9 +62,9 @@ def get_updates():
 def get_aur_updates():
     output = ''
     try:
-        output = check_output(['yaourt', '-Qua']).decode('utf-8')
+        output = check_output(['yay', '-Qua']).decode('utf-8')
     except subprocess.CalledProcessError as exc:
-        # yaourt exits with 1 and no output if no updates are available.
+        # yay exits with 1 and no output if no updates are available.
         # we ignore this case and go on
         if not (exc.returncode == 1 and not exc.output):
             raise exc
