@@ -1,5 +1,5 @@
 ## ls
-    alias ls='ls --color=auto --human-readable -p --group-directories-first'
+    alias ls='lsd'
     alias l='ls'
     alias ll='ls -lArt'
 
