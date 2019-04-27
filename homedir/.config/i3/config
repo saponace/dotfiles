@@ -57,17 +57,17 @@
 
 
 #----- Volume control (killall force reloading the status bar)
-    bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
-    bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10  i3blocks"
-    bindsym XF86AudioMute exec "amixer -q set Master toggle && pkill -SIGRTMIN+10  i3blocks"
+    bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute && killall -SIGUSR1 py3status"
+    bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute && killall -SIGUSR1 py3status"
+    bindsym XF86AudioMute exec "amixer -q set Master toggle && killall -SIGUSR1 py3status"
 
-#----- Brightness control
-    bindsym XF86MonBrightnessUp exec "light -A 10"
-    bindsym XF86MonBrightnessDown exec "light -U 10"
+#----- Brightness control (killall force reloading the status bar)
+    bindsym XF86MonBrightnessUp exec "light -A 10 && killall -SIGUSR1 py3status"
+    bindsym XF86MonBrightnessDown exec "light -U 10 && killall -SIGUSR1 py3status"
 
-#----- Send signal to i3blocks when hitting keys
-    bindsym --release Num_Lock exec pkill -SIGRTMIN+10 i3blocks
-    bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
+#----- Send signal to status bar when hitting keys
+    bindsym --release Num_Lock exec killall -SIGUSR1 py3status
+    bindsym --release Caps_Lock exec killall -SIGUSR1 py3status
 
 
 #----- Colors
@@ -101,12 +101,11 @@
 
 
 
-# i3bar to display i3status content
+# py3status to display i3status content
     bar {
         font pango:Inconsolata-g, sans-mono, FontAwesome 8
-        status_command i3blocks
+        status_command py3status --dbus-notify
         position top
-        #mode hide
         modifier $mod
         colors{
             background #111111
