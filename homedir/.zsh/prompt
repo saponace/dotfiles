@@ -1,9 +1,9 @@
 #----- Command prompt settings
-    ## enable parameter expansion, command substitution and arithmetic expansion in prompts
+    ## Enable parameter expansion, command substitution and arithmetic expansion in prompts
         setopt prompt_subst
-    ## remove any right prompt from display when accepting a command line. This may be useful with terminals with other cut/paste methods
+    ## Remove any right prompt from display when accepting a command line. This may be useful with terminals with other cut/paste methods
         setopt transient_rprompt
-    ## this is needed by a lot of function in this zshrc
+    ## This is needed by a lot of function in this zshrc
         autoload -Uz colors && colors
 
 
@@ -89,9 +89,6 @@ else
 fi
 
 
-
-#[[ ${LANG} =~ UTF-8 ]] && LONGPROMPT=$'\n'"${FRAMECOLOR}┌[${FRAMECOLOR2}%f%b${HOSTNAMECOLOR}%n${HOSTNAMECOLOR2}@${HOSTNAMECOLOR3}%m${HOSTNAMECOLOR4}${FRAMECOLOR}]─[${FRAMECOLOR2}${TIMEDATECOLOR}%D{%F %T}${TIMEDATECOLOR2}${FRAMECOLOR}]${FRAMECOLOR2}%(?..${FRAMECOLOR}─[%B%F{red}%?%f%b${FRAMECOLOR}]${FRAMECOLOR2})${PWDCOLOR}%~${PWDCOLOR2}\$(_-git_ps1)"$'\n'"${FRAMECOLOR}└─>${FRAMECOLOR2}%{${EUIDCOLOR}%} %#%f%b "
-
 [[ ${LANG} =~ UTF-8 ]] && LONGPROMPT=$'\n'"${FRAMECOLOR}┌[${FRAMECOLOR2}%f%b${HOSTNAMECOLOR}%n${HOSTNAMECOLOR2}@${HOSTNAMECOLOR3}%m${HOSTNAMECOLOR4}${FRAMECOLOR}]─[${FRAMECOLOR2}${TIMEDATECOLOR}%D{%F %T}${TIMEDATECOLOR2}${FRAMECOLOR}]${FRAMECOLOR2}%(?..${FRAMECOLOR}─[%B%F{red}%?%f%b${FRAMECOLOR}]${FRAMECOLOR2}) \$(alternatedPWD)\$(_-git_ps1)"$'\n'"${FRAMECOLOR}└─>${FRAMECOLOR2}%{${EUIDCOLOR}%} %#%f%b "
 
 
@@ -131,15 +128,13 @@ _-git_ps1() {
 }
 
 
-
-
 ## Short Prompt
 SHORTPROMPT="%{$fg[green]%}>%{$reset_color%}"
 
 
 ## Aliasing prompt changes
-alias short='export PROMPT=$SHORTPROMPT && export RPROMPT=""'
-alias long='export PROMPT=$LONGPROMPT'
+alias short-prompt='export PROMPT=$SHORTPROMPT && export RPROMPT=""'
+alias long-prompt='export PROMPT=$LONGPROMPT'
 
 
 ## Long prompt as default prompt

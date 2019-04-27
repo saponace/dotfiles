@@ -1,7 +1,7 @@
 ## ls
     alias ls='lsd'
     alias l='ls'
-    alias ll='ls -lArt'
+    alias ll='ls -lart'
 
 
 ## mkdir
@@ -40,6 +40,8 @@
         compdef _git gco=git-checkout
     alias gc='git commit -m'
         compdef _git gc=git-commit-m
+    alias gca='git commit --amend'
+        compdef _git gca=git-commit-amend
     alias gd='git diff'
         compdef _git gd=git-diff
     alias gl='git pull'

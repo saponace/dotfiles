@@ -1,20 +1,17 @@
 ## Print the complete command and check correctness
 _-accept-line() {
-	local -a WORDS
-	WORDS=( ${(z)BUFFER} )
-	local -r FIRSTWORD=${WORDS[1]}
-	local -r GREEN=$'\e[32m' RESET_COLORS=$'\e[0m'
-	[[ "$(whence -w $FIRSTWORD 2>/dev/null)" == "${FIRSTWORD}: alias" ]] &&
-	echo -n $'\n'"${GREEN}Executing: $(whence $FIRSTWORD)${RESET_COLORS}"
-	zle .accept-line
+    local -a WORDS
+    WORDS=( ${(z)BUFFER} )
+    local -r FIRSTWORD=${WORDS[1]}
+    local -r GREEN=$'\e[32m' RESET_COLORS=$'\e[0m'
+    [[ "$(whence -w $FIRSTWORD 2>/dev/null)" == "${FIRSTWORD}: alias" ]] &&
+    echo -n $'\n'"${GREEN}Executing: $(whence $FIRSTWORD)${RESET_COLORS}"
+    zle .accept-line
 }
-	zle -N accept-line _-accept-line
+zle -N accept-line _-accept-line
 
 
-
-
-
-## grep: exclude these special directories for a better matching speed
+## Grep: exclude these special directories for a better matching speed
 [[ -n ${commands[grep]} ]] && {
     export GREP_COLOR='7;2;32';
     export GREP_OPT='--color=auto';
@@ -26,9 +23,7 @@ _-accept-line() {
 }
 
 
-
-
-# less as default pager/viewer
+# Less as default pager/viewer
 [[ -n ${commands[less]} ]] && {
 export PAGER=less
 export MANPAGER=${PAGER}
@@ -40,10 +35,7 @@ export TAR_OPTIONS='--delay-directory-restore'
 [[ -n ${commands[urxvtd]} ]] && export RXVT_SOCKET=/tmp/rxvt-unicode-${EUID}-${HOST}
 
 
-
-
-
-## for colored man page
+## Add colors in man pages
 [[ -n ${commands[less]} ]] && export LESS_TERMCAP_mb=$'\E[1;36m' \
     LESS_TERMCAP_md=$'\E[1;31m' \
     LESS_TERMCAP_me=$'\E[0m' \
@@ -53,10 +45,7 @@ export TAR_OPTIONS='--delay-directory-restore'
     LESS_TERMCAP_us=$'\E[1;32m'
 
 
-
-
-
-## create a dir and cd in it
+## Create a dir and cd in it
 mkdirc() {
     if [[ $# -ne 1 || "${1}" == '--help' ]];then
         _-automatic-colored
@@ -80,10 +69,7 @@ mkdirc() {
 }
 
 
-
-
-
-## create a random named tmp file and cd in it
+## Create a random named tmp directory and cd in it
 cdtmp() {
     if [[ "${1}" == '--help' || "${1}" == '-h' || $# -gt 1 ]];then
         _-automatic-colored
@@ -97,61 +83,6 @@ cdtmp() {
         cd ${dir}
     fi
 }
-
-
-
-
-
-## print current tty
-tty() {
-    if [[ $# -eq 0 ]];then
-        print ${TTY}
-    else
-        command tty $@
-    fi
-}
-
-
-
-
-
-## dowload a webpage
-fetch() {
-    if [[ $# -ge 1 && ${1} != '--help' && ${1} != '-h' ]];then
-        for i in $@;do
-            curl -fL --retry 3 --retry-delay 3 --connect-timeout 7 -o ${i##*/} ${i}
-        done
-    else
-        print 'Usage: fetch [URL]...\n\nA wrapper function for curl'
-    fi
-}
-
-
-
-
-
-## List installed packages
-[[ -n ${commands[package-query]} && -n ${commands[less]} ]] && pacls() {
-local _if_pager
-[[ -t 1 ]] && _if_pager=ptypg || _if_pager=pty
-if [[ -z "${1}" || "${1}" == '-1' ]];then
-    ${_if_pager} package-query -Qe --sort date
-elif [[ "${1}" == '-s' ]];then
-    ${_if_pager} package-query -Qe --sort size
-elif [[ "${1}" == '-n' ]];then
-    ${_if_pager} package-query -Qe
-else
-    print 'Usage: pacls [OPTION]
-    pacls print the explicitly installed package list
-
-    -1,   sort by date(default)
-    -n,   sort by alphabet
-    -s,   sort by package size'
-fi
-}
-
-
-
 
 
 ## Display help
@@ -183,9 +114,6 @@ help() {
             man $@
         fi
 }
-
-
-
 
 
 ## Create backup file
@@ -225,9 +153,6 @@ unset -f _-intro
 }
 
 
-
-
-
 ## Sudo su insted of su, plus warning
 su() {
     if [[ ${EUID} -ne 0 && -n ${commands[sudo]} ]];then
@@ -240,9 +165,6 @@ su() {
 }
 
 
-
-
-
 ## Print availible disk space
 df() {
     if [[ $# -eq 0 ]];then
@@ -253,85 +175,37 @@ df() {
 }
 
 
-
-
-
 ## Print files size
 [[ -n ${commands[${PAGER:-less}]} ]] && du() {
-if [[ $# -eq 0 && -t 0 ]];then
-    command du -h | ${PAGER:-less}
-else
-    command du $@
-fi
-}
-
-
-
-
-
-## Show who is logged on and what they are doing
-[[ -n ${commands[w]} ]] && w() {
-if [[ $# -eq 0 ]];then
-    command w -f
-else
-    command w $@
-fi
-}
-
-
-
-
-
-## Show who is logged on
-[[ -n ${commands[who]} ]] && who() {
-if [[ $# -eq 0 ]];then
-    command who -HprtTud
-else
-    command who $@
-fi
-}
-
-
-
-
-
-## History
-[[ -n ${commands[${PAGER:-less}]} ]] && hist() {
-if [[ $# -eq 0 && -t 0 ]];then
-    fc -il 1 | ${PAGER:-less}
-else
-    builtin history $@
-fi
-}
-
-
-
-
-
-
-
-## Print terminal display infos
-rsz() {
-    if [[ -t 0 && $# -eq 0 ]];then
-        local IFS='[;' escape geometry x y
-        print -n '\e7\e[r\e[999;999H\e[6n\e8'
-        read -sd R escape geometry
-        x=${geometry##*;} y=${geometry%%;*}
-        if [[ ${COLUMNS} -eq ${x} && ${LINES} -eq ${y} ]];then
-            print "${TERM} ${x}x${y}"
-        else
-            print "${COLUMNS}x${LINES} -> ${x}x${y}"
-            stty cols ${x} rows ${y}
-        fi
+    if [[ $# -eq 0 && -t 0 ]];then
+        command du -h | ${PAGER:-less}
     else
-        [[ -n ${commands[repo-elephant]} ]] && repo-elephant || print 'Usage: rsz'
+        command du $@
     fi
 }
 
 
+## Show who is logged on and what they are doing
+[[ -n ${commands[w]} ]] && w() {
+    if [[ $# -eq 0 ]];then
+        command w -f
+    else
+        command w $@
+    fi
+}
 
 
+## History
+[[ -n ${commands[${PAGER:-less}]} ]] && hist() {
+    if [[ $# -eq 0 && -t 0 ]];then
+        fc -il 1 | ${PAGER:-less}
+    else
+        builtin history $@
+    fi
+}
 
+
+# Colors settings
 _-automatic-colored() {
     if [[ ${1} == unset || ! -t 1 ]];then
         unset rst bld bldwht bldblk bldred bldgrn bldylw bldblu bldcyn blk red grn ylw blu cyn gry
@@ -358,9 +232,6 @@ _-automatic-colored() {
 }
 
 
-
-
-
 ## Extract lots of archive types
 extract () {
     if [ -f $1 ] ; then
@@ -384,10 +255,6 @@ extract () {
 }
 
 
-
-
-
-
 ## Terminal emulator title settings ##
 case ${TERM} in
     xterm*|rxvt*|ansi)
@@ -401,10 +268,6 @@ case ${TERM} in
         add-zsh-hook precmd _default_terminal_title
         add-zsh-hook preexec _command_terminal_title ;;
 esac
-
-
-
-
 
 
 
