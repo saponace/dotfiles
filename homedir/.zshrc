@@ -1,3 +1,6 @@
 #Just calls the actual zshrc
 
-source $(cd $(dirname "$0"); pwd)/.config/zsh/all
+zshrc_path=${(%):-%N}
+zshrc_dir=$(dirname ${zshrc_path})
+
+source ${zshrc_dir}/.config/zsh/all
