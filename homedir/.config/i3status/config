@@ -165,6 +165,7 @@ vpn_status {
   color_good = lightcoral
   color_bad = lightcoral
   on_click 1 = 'exec pypia -r all -f'
+  on_click 3 = 'exec pypia -d'
 }
 
 backlight {
