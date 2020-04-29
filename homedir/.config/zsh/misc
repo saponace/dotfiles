@@ -108,10 +108,18 @@ autoload -Uz zargs zcalc
         zstyle ':completion:*:-tilde-::named-directories' ignored-patterns '_*'
     ## ignore the users that uninterested except really expected
         zstyle ':completion:*:*:*:users' ignored-patterns adm amanda amule apache at avahi avahi-autoipd beaglidx bin cacti canna colord clamav daemon dbus distcache dnsmasq dovecot fax ftp games gdm git gkrellmd gopher hacluster haldaemon halt http hsqldb ident incron junkbust kdm ldap lp mail mailman mailnull man messagebus mldonkey mysql nagios named nbd netdump news nfsnobody nobody nscd ntp nut nx obsrun openvpn operator pcap pdnsd polkitd postfix postgres privoxy pulse pvm quagga radvd rpc rpcuser rpm rtkit sagemath scard shutdown squid sshd statd svn sync tftp tor usbmux uucp uuidd vcsa wwwrun xfs '_*' 'systemd-*' ${USERNAME}
-    
+
     zstyle ':completion:*' single-ignored show
     autoload -Uz compinit
     compinit
 for i in i386 x86_64 linux32 linux64 pty ptypg stdoutisatty unbuffer me proxychains grc rlwrap;do
     compdef ${i}=command
 done
+
+
+
+
+
+#----- Source external scripts
+    # Init Node Version Manager environment
+        source /usr/share/nvm/init-nvm.sh
