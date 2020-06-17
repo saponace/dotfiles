@@ -122,4 +122,5 @@ done
 
 #----- Source external scripts
     # Init Node Version Manager environment
-        source /usr/share/nvm/init-nvm.sh
+    # Disabled for now because it slows down shell startup a lot
+      # source /usr/share/nvm/init-nvm.sh
