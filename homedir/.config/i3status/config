@@ -16,7 +16,6 @@ order += 'xrandr'
 order += 'group wifi'
 order += 'whatismyip'
 order += 'arch_updates'
-order += 'vpn_status'
 order += 'backlight'
 order += 'volume_status'
 order += 'do_not_disturb'
@@ -159,13 +158,6 @@ arch_updates {
   color = thistle
   icon2 = ''
   format = '{icon2} {pacman} (AUR: {aur})'
-}
-
-vpn_status {
-  color_good = lightcoral
-  color_bad = lightcoral
-  on_click 1 = 'exec pypia -r all -f'
-  on_click 3 = 'exec pypia -d'
 }
 
 backlight {
