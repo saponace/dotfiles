@@ -358,6 +358,9 @@ let g:SuperTabCrMapping = 0
 " Vim-json
     let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
 
+" SnipMate
+    let g:snipMate = { 'snippet_version' : 1 }
+
 " Python mode
     let g:pymode_doc_bind = "<leader>h"
 
