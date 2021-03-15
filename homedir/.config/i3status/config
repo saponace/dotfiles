@@ -27,7 +27,7 @@ order += 'keyboard_locks'
 
 static_string wallpaper {
   format = ""
-  on_click 1 = "set-random-wallpaper"
+  on_click 1 = "exec generate-wallpaper"
 }
 static_string screenshot {
   format = ""
