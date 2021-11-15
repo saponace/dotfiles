@@ -22,6 +22,11 @@ autoload -Uz zargs zcalc
     setopt correct
 
 
+## Consider directories as words (So Ctrl+w removes up to the latest slash in a filepath)
+    autoload -U select-word-style
+    select-word-style bash
+
+
 #----- Signals stuff
     ## do not send the HUP signal to running jobs when the shell exits
     setopt no_hup
