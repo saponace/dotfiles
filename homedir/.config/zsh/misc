@@ -115,12 +115,3 @@ autoload -Uz zargs zcalc
 for i in i386 x86_64 linux32 linux64 pty ptypg stdoutisatty unbuffer me proxychains grc rlwrap;do
     compdef ${i}=command
 done
-
-
-
-
-
-#----- Source external scripts
-    # Init Node Version Manager environment
-    # Disabled for now because it slows down shell startup a lot
-      # source /usr/share/nvm/init-nvm.sh
