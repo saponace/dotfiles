@@ -23,6 +23,7 @@ autoload -Uz zargs zcalc
 
 
 ## Consider directories as words (So Ctrl+w removes up to the latest slash in a filepath)
+    local WORDCHARS=${WORDCHARS/\/}
     autoload -U select-word-style
     select-word-style bash
 
