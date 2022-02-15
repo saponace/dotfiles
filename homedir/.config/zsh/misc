@@ -10,6 +10,13 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 autoload -Uz zargs zcalc
 
 
+## Exports
+    export QT_QPA_PLATFORMTHEME="qt5ct"
+    export EDITOR=/usr/bin/nvim
+    export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+    export BROWSER=/usr/bin/brave
+
+
 ## Miscellaneous options
     setopt no_beep auto_cd
 
