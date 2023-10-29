@@ -3,7 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Colorscheme
     Plug 'tomasr/molokai'
-    Plug 'altercation/vim-colors-solarized'
 " Utilities
     " File navigation
         Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder, mapped to <leader>t
@@ -319,8 +318,9 @@ nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 
 " Section Plugins {{{
 
-" Colorscheme
+" Style
     colorscheme molokai
+    hi Normal guibg=NONE ctermbg=NONE
 
 " NERDTree
 	let g:NERDTreeQuitOnOpen=0 " Close NERDTree after a file is opened
