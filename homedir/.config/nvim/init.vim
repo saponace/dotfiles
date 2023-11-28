@@ -321,6 +321,7 @@ nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 " Style
     colorscheme molokai
     hi Normal guibg=NONE ctermbg=NONE
+    hi Visual guibg=#444444 ctermbg=238
 
 " NERDTree
 	let g:NERDTreeQuitOnOpen=0 " Close NERDTree after a file is opened
