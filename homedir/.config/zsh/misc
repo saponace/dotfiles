@@ -28,6 +28,9 @@ autoload -Uz zargs zcalc
 ## correction
     setopt correct
 
+## History reverse search
+    bindkey '^R' history-incremental-pattern-search-backward
+
 
 ## Consider directories as words (So Ctrl+w removes up to the latest slash in a filepath)
     local WORDCHARS=${WORDCHARS/\/}
