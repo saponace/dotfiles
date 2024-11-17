@@ -52,6 +52,10 @@ autoload -Uz zargs zcalc
     autoload -Uz colors && colors
 
 
+## fzf: fuzzy search in files and shell history
+    source <(fzf --zsh)
+
+
 
 #----- Resources limit
     unlimit
