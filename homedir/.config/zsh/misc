@@ -55,6 +55,10 @@ autoload -Uz zargs zcalc
 ## fzf: fuzzy search in files and shell history
     source <(fzf --zsh)
 
+## zoxide: better cd
+eval "$(zoxide init zsh)"
+alias cd=z
+
 
 
 #----- Resources limit
