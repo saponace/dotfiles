@@ -16,6 +16,7 @@
 
 
 ## because typing 'cd' is A LOT of work!!
+    alias d='cd'
     alias ..='cd ../'
     alias ...='cd ../../'
     alias ....='cd ../../../'
